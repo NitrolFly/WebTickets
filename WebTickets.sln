@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebTickets.API", "WebTickets.API\WebTickets.API.csproj", "{9A44933B-92EA-4BB0-999A-62CD7560BEA5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebTickets.Infrastructure", "src\WebTickets.Infrastructure\WebTickets.Infrastructure.csproj", "{892C6880-CB6A-4606-A366-C06757983E7E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebTickets.Domain", "src\WebTickets.Domain\WebTickets.Domain.csproj", "{C5939862-28C0-447D-AEC3-D0C8F4903DBF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebTickets.Application", "src\WebTickets.Application\WebTickets.Application.csproj", "{26A2D1DC-E394-428E-B523-5342AB810A9B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9A44933B-92EA-4BB0-999A-62CD7560BEA5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A44933B-92EA-4BB0-999A-62CD7560BEA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A44933B-92EA-4BB0-999A-62CD7560BEA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A44933B-92EA-4BB0-999A-62CD7560BEA5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{892C6880-CB6A-4606-A366-C06757983E7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{892C6880-CB6A-4606-A366-C06757983E7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{892C6880-CB6A-4606-A366-C06757983E7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{892C6880-CB6A-4606-A366-C06757983E7E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C5939862-28C0-447D-AEC3-D0C8F4903DBF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C5939862-28C0-447D-AEC3-D0C8F4903DBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C5939862-28C0-447D-AEC3-D0C8F4903DBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C5939862-28C0-447D-AEC3-D0C8F4903DBF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{26A2D1DC-E394-428E-B523-5342AB810A9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26A2D1DC-E394-428E-B523-5342AB810A9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26A2D1DC-E394-428E-B523-5342AB810A9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26A2D1DC-E394-428E-B523-5342AB810A9B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
