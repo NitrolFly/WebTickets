@@ -4,6 +4,8 @@
         <TargetFramework>net10.0</TargetFramework>
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
+        <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+        <UserSecretsId>83a04fd2-4259-4e67-81cf-410da3cc06ff</UserSecretsId>
     </PropertyGroup>
 
     <ItemGroup>
@@ -14,6 +16,12 @@
       <ProjectReference Include="..\src\WebTickets.Application\WebTickets.Application.csproj" />
       <ProjectReference Include="..\src\WebTickets.Domain\WebTickets.Domain.csproj" />
       <ProjectReference Include="..\src\WebTickets.Infrastructure\WebTickets.Infrastructure.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Content Include="..\.dockerignore">
+        <Link>.dockerignore</Link>
+      </Content>
     </ItemGroup>
 
 </Project>
