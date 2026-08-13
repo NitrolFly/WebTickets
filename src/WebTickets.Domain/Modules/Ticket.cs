@@ -62,4 +62,17 @@ public class Ticket: TicketTaggableEntity<TicketId>
         _ticketTags.Add(ticketTagResult.Value);
         return Result.Success();
     }
+
+    public Result RemoveTag(TagId  tagId)
+    {
+        var ticketTag = _ticketTags.FirstOrDefault(tt => tt.TagId == tagId);
+
+        if (ticketTag is null)
+        {
+            return Result.Failure("This tag is not associated with the ticket");
+        }
+
+        _ticketTags.Remove(ticketTag);
+        return Result.Success();
+    }
 }

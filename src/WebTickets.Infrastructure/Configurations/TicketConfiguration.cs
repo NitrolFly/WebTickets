@@ -9,7 +9,7 @@ public class TicketConfiguration : IEntityTypeConfiguration<Ticket>
 {
     public void Configure(EntityTypeBuilder<Ticket> builder)
     {
-        builder.ToTable("Tickets");
+        builder.ToTable(nameof(Ticket));
 
         builder.HasKey(t => t.Id);
         builder.Property(t => t.Id)
