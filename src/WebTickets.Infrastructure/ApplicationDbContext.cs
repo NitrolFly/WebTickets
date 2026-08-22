@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using WebTickets.Domain.Module.User;
 using WebTickets.Domain.Modules;
 using WebTickets.Domain.Roles;
-using WebTickets.Domain.Users;
 
 namespace WebTickets.Infrastructure;
 
@@ -20,27 +20,7 @@ public class ApplicationDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        // Зарегистрировать конвертер СРАЗУ (до ApplyConfigurationsFromAssembly)
-        var ticketIdConverter = new ValueConverter<TicketId, Guid>(
-            id => id.Value,
-            guid => TicketId.Create(guid)
-        );
-
-        // Автоматически применить конвертер ко всем свойствам типа TicketId
-        foreach (var entityType in modelBuilder.Model.GetEntityTypes())
-        {
-            var clrType = entityType.ClrType;
-            if (clrType == null) continue;
-
-            foreach (var prop in clrType.GetProperties().Where(p => p.PropertyType == typeof(TicketId)))
-            {
-                modelBuilder.Entity(clrType).Property(prop.Name).HasConversion(ticketIdConverter);
-            }
-        }
-
-        // Применяем конфигурации из сборки
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);
-
         base.OnModelCreating(modelBuilder);
     }
 }

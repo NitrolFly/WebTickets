@@ -110,7 +110,7 @@ namespace WebTickets.Infrastructure.Migrations
                 {
                     table.PrimaryKey("pk_message", x => x.id);
                     table.ForeignKey(
-                        name: "fk_message_tickets_ticket_id",
+                        name: "fk_message_ticket_ticket_id",
                         column: x => x.ticket_id,
                         principalTable: "Ticket",
                         principalColumn: "id",
@@ -147,7 +147,7 @@ namespace WebTickets.Infrastructure.Migrations
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "fk_file_tickets_ticket_id",
+                        name: "fk_file_ticket_ticket_id",
                         column: x => x.ticket_id,
                         principalTable: "Ticket",
                         principalColumn: "id",

@@ -1,9 +1,9 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using WebTickets.Domain;
+using WebTickets.Domain.Module.User;
 using WebTickets.Domain.Modules;
 using WebTickets.Domain.Roles;
-using WebTickets.Domain.Users;
 
 namespace WebTickets.Infrastructure.Configurations;
 

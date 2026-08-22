@@ -1,6 +1,5 @@
 using CSharpFunctionalExtensions;
 using WebTickets.Domain.Shared;
-using WebTickets.Domain.Users;
 
 namespace WebTickets.Domain.Modules;
 

@@ -22,6 +22,41 @@ namespace WebTickets.Infrastructure.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
+            modelBuilder.Entity("WebTickets.Domain.Module.User.User", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uuid")
+                        .HasColumnName("id");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("character varying(200)")
+                        .HasColumnName("email");
+
+                    b.Property<Guid>("RoleId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("role_id");
+
+                    b.Property<string>("UserName")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("character varying(50)")
+                        .HasColumnName("user_name");
+
+                    b.HasKey("Id")
+                        .HasName("pk_user");
+
+                    b.HasIndex("Email")
+                        .IsUnique()
+                        .HasDatabaseName("ix_user_email");
+
+                    b.HasIndex("RoleId")
+                        .HasDatabaseName("ix_user_role_id");
+
+                    b.ToTable("User", (string)null);
+                });
+
             modelBuilder.Entity("WebTickets.Domain.Modules.File", b =>
                 {
                     b.Property<Guid>("Id")
@@ -220,39 +255,14 @@ namespace WebTickets.Infrastructure.Migrations
                     b.ToTable("Role", (string)null);
                 });
 
-            modelBuilder.Entity("WebTickets.Domain.Users.User", b =>
+            modelBuilder.Entity("WebTickets.Domain.Module.User.User", b =>
                 {
-                    b.Property<Guid>("Id")
-                        .HasColumnType("uuid")
-                        .HasColumnName("id");
-
-                    b.Property<string>("Email")
+                    b.HasOne("WebTickets.Domain.Roles.Role", null)
+                        .WithMany()
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("character varying(200)")
-                        .HasColumnName("email");
-
-                    b.Property<Guid>("RoleId")
-                        .HasColumnType("uuid")
-                        .HasColumnName("role_id");
-
-                    b.Property<string>("UserName")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("character varying(50)")
-                        .HasColumnName("user_name");
-
-                    b.HasKey("Id")
-                        .HasName("pk_user");
-
-                    b.HasIndex("Email")
-                        .IsUnique()
-                        .HasDatabaseName("ix_user_email");
-
-                    b.HasIndex("RoleId")
-                        .HasDatabaseName("ix_user_role_id");
-
-                    b.ToTable("User", (string)null);
+                        .HasConstraintName("fk_user_role_role_id");
                 });
 
             modelBuilder.Entity("WebTickets.Domain.Modules.File", b =>
@@ -267,7 +277,7 @@ namespace WebTickets.Infrastructure.Migrations
                         .WithMany()
                         .HasForeignKey("TicketId")
                         .OnDelete(DeleteBehavior.Cascade)
-                        .HasConstraintName("fk_file_tickets_ticket_id");
+                        .HasConstraintName("fk_file_ticket_ticket_id");
 
                     b.Navigation("Message");
 
@@ -276,7 +286,7 @@ namespace WebTickets.Infrastructure.Migrations
 
             modelBuilder.Entity("WebTickets.Domain.Modules.Message", b =>
                 {
-                    b.HasOne("WebTickets.Domain.Users.User", "Author")
+                    b.HasOne("WebTickets.Domain.Module.User.User", "Author")
                         .WithMany()
                         .HasForeignKey("AuthorId")
                         .OnDelete(DeleteBehavior.Restrict)
@@ -288,7 +298,7 @@ namespace WebTickets.Infrastructure.Migrations
                         .HasForeignKey("TicketId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
-                        .HasConstraintName("fk_message_tickets_ticket_id");
+                        .HasConstraintName("fk_message_ticket_ticket_id");
 
                     b.Navigation("Author");
 
@@ -314,16 +324,6 @@ namespace WebTickets.Infrastructure.Migrations
                     b.Navigation("Tag");
 
                     b.Navigation("Ticket");
-                });
-
-            modelBuilder.Entity("WebTickets.Domain.Users.User", b =>
-                {
-                    b.HasOne("WebTickets.Domain.Roles.Role", null)
-                        .WithMany()
-                        .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired()
-                        .HasConstraintName("fk_user_role_role_id");
                 });
 
             modelBuilder.Entity("WebTickets.Domain.Modules.Tag", b =>
