@@ -1,3 +1,4 @@
+using System.Text.Json;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using WebTickets.Domain;
@@ -24,11 +25,7 @@ public class RoleConfiguration: IEntityTypeConfiguration<Role>
 
         builder.HasIndex(r => r.RoleName)
             .IsUnique();
-
-        builder.Metadata
-            .FindNavigation(nameof(Role.Permissions))!
-            .SetPropertyAccessMode(PropertyAccessMode.Field);
-
+        
         builder.PrimitiveCollection<List<Role.Permission>>("_permissions")
             .HasColumnName("Permissions")
             .ElementType(e => e.HasConversion(typeof(string)));

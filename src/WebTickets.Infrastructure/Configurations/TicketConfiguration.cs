@@ -24,5 +24,8 @@ public class TicketConfiguration : IEntityTypeConfiguration<Ticket>
         builder.Property(m => m.Description)
             .IsRequired()
             .HasMaxLength(Constants.HIGH_TEXT_LENGTH);
+        
+        builder.Navigation(t => t.TicketTags)
+            .UsePropertyAccessMode(PropertyAccessMode.Field);
     }
 }

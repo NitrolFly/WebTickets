@@ -13,14 +13,12 @@ public class Ticket: TicketTaggableEntity<TicketId>
         Description = description;
     }
     
-    public TicketId Id { get; private set; }
     public string Title { get; private set; } = null!;
     public string Description { get; private set; } = null!;
     
     public TicketStatus Status { get; set; }  
     public TicketPriority Priority { get; set; }
     
-    public List<File> Files { get; private set; } = [];
     public enum TicketStatus
     {
         Pending = 0, // Ожидает ответа
@@ -73,6 +71,13 @@ public class Ticket: TicketTaggableEntity<TicketId>
         }
 
         _ticketTags.Remove(ticketTag);
+        return Result.Success();
+    }
+    public Result EnsureCanReceiveMessages()
+    {
+        if (Status == TicketStatus.Completed)
+            return Result.Failure("Ticket is closed");
+
         return Result.Success();
     }
 }

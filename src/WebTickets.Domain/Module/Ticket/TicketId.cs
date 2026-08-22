@@ -2,7 +2,7 @@ namespace WebTickets.Domain.Modules;
 
 public record TicketId
 {
-    private TicketId(Guid value)
+    public TicketId(Guid value)
     {
         Value = value;
     }

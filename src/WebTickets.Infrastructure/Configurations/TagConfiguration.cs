@@ -1,3 +1,4 @@
+
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using WebTickets.Domain;
@@ -7,6 +8,7 @@ namespace WebTickets.Infrastructure.Configurations;
 
 public class TagConfiguration : IEntityTypeConfiguration<Tag>
 {
+    
     public void Configure(EntityTypeBuilder<Tag> builder)
     {
         builder.ToTable(nameof(Tag));

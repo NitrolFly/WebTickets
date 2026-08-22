@@ -5,6 +5,7 @@ namespace WebTickets.Domain.Modules;
 
 public class Tag : TicketTaggableEntity<TagId>
 {
+    private Tag(TagId id) : base(id) { }
     private Tag(TagId tagId, string tagName) : base(tagId)
     {
         TagName = tagName;

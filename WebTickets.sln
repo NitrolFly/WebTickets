@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebTickets.API", "WebTickets.API\WebTickets.API.csproj", "{9A44933B-92EA-4BB0-999A-62CD7560BEA5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebTickets.API", "src\WebTickets.API\WebTickets.API.csproj", "{9A44933B-92EA-4BB0-999A-62CD7560BEA5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebTickets.Infrastructure", "src\WebTickets.Infrastructure\WebTickets.Infrastructure.csproj", "{892C6880-CB6A-4606-A366-C06757983E7E}"
 EndProject
